@@ -34,20 +34,22 @@ def calculator(request):
     return render(request, 'calculator.html', {'result':result})
 
 
+def lottery_basic(request):
+    
+    lotto_list = []
+    for i in range(7):
+        while True:
+            tmp = random.randint(1,45)
+            if(tmp not in lotto_list):
+                lotto_list.append(tmp)
+                break
+    
+    lotto_list = sorted(lotto_list)
+
+
+    return render(request, 'lottery_basic.html', {'result' : lotto_list})
 
 def lottery(request):
-
-    # lotto_list = []
-    # for i in range(7):
-    #     while True:
-    #         tmp = random.randint(1,45)
-    #         if(tmp not in lotto_list):
-    #             lotto_list.append(tmp)
-    #             break
-    
-    # lotto_list = sorted(lotto_list)
-
-
     return render(request, 'lottery.html')
 
 def lottery_result(request):
